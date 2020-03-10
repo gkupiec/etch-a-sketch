@@ -1,0 +1,104 @@
+<html>
+<head>
+
+<title>Etch-A-Sketch</title>
+
+<link rel="stylesheet" type="text/css" href="Etch_a_Sketch.css">
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+
+<div id="container"></div>
+<div id="controls">
+<button id="clear" class="knob">clear</button>
+<button id="black" class="knob">black</button>
+<button id="reset" class="knob">reset</button>
+<button id="rainbow" class="knob">rainbow</button>
+<p id="logo">Etch</p>
+</div>
+
+<script>
+
+const container = document.querySelector('#container');
+
+function makeBoards() {
+for(i=0; i<3600; i++){
+const board = document.createElement('div');
+board.classList.add('board');
+board.addEventListener('mouseover' , colorBoards);
+container.appendChild(board);
+}
+}
+
+function rainbow() {
+document.querySelectorAll('.board').forEach(item => {
+item.removeEventListener('mouseover' , colorBoards);
+});
+document.querySelectorAll('.board').forEach(item => {
+item.addEventListener('mouseover' , rainbowBoards);
+});
+}
+
+function black() {
+document.querySelectorAll('.board').forEach(item => {
+item.removeEventListener('mouseover' , rainbowBoards);
+});
+document.querySelectorAll('.board').forEach(item => {
+item.addEventListener('mouseover' , colorBoards);
+});
+}
+
+function colorBoards() {
+this.style.backgroundColor = "black";
+}
+
+function rainbowBoards() {
+const randomColor = Math.floor(Math.random()*16777215).toString(16);
+this.style.backgroundColor = "#" + randomColor;
+}
+
+function clearBoards() {
+const altBoards = document.querySelectorAll('.board');
+altBoards.forEach(element => {
+element.setAttribute('style' , 'background-color: #f8f8f8');
+});
+}
+
+function eraseBoard() {
+let bye = document.getElementById('container').childElementCount;
+for(i = 0; i < bye; i++) {
+container.lastElementChild.remove();
+}
+}
+
+function resetBoard() {
+eraseBoard();
+const size = prompt("Enter a number between 1 and 200");
+let count = (size*size);
+container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+createBoard(parseInt(count));
+}
+
+function createBoard(count) {
+for(i = 0; i < count; i++){
+const board = document.createElement('div');
+board.classList.add('board');
+board.classList.add('off');
+board.addEventListener('mouseover' , colorBoards);
+container.appendChild(board);
+}
+}
+
+document.getElementById("clear").addEventListener("click" , clearBoards);
+document.getElementById("reset").addEventListener("click" , resetBoard);
+document.getElementById("black").addEventListener("click" , black);
+document.getElementById("rainbow").addEventListener("click" , rainbow);
+window.addEventListener('load' , makeBoards);
+
+
+</script>
+
+</body>
+
+</html>

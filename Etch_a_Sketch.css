@@ -1,0 +1,95 @@
+#container {
+width: 860px;
+height: 860px;
+margin-right: auto;
+margin-left: auto;
+display: grid;
+grid-template-columns: repeat(60, 1fr);
+border: 20px solid #990000;
+border-radius: 20px 20px 0px 0px;
+}
+
+#controls {
+width: 860px;
+height: 100px;
+margin-right: auto;
+margin-left: auto;
+background: #990000;
+border: 20px solid #990000;
+border-radius: 0px 0px 20px 20px;
+}
+
+.knob {
+height: 80px;
+width: 80px;
+border: 1px solid gray;
+border-radius: 50%;
+font-size: large;
+}
+
+#clear {
+position: relative;
+float: left;
+margin-left: 10px;
+z-index: 2;
+}
+
+#black {
+color: #fff;
+position: relative;
+float: left;
+margin-left: 20px;
+z-index: 3;
+background: #000;
+}
+
+#rainbow {
+color: #fff;
+position: relative;
+float: right;
+margin-right: 20px;
+z-index: 4;
+background: #FEAC5E;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#reset {
+position: relative;
+float: right;
+margin-right: 10px;
+z-index: 5;
+}
+
+#logo {
+font-family: 'Pacifico', cursive;
+font-size: xx-large;
+color: #660000;
+position: absolute;
+left: 0;
+top: 91%;
+width: 100%; 
+text-align: center;
+z-index: 1;
+}
+
+.board {
+background-color: #f8f8f8;
+border: 0.5px solid white;
+}
+
+
+/*.off {
+min-height: 1px;
+width: 100%;
+padding-bottom: 100%;
+background: #fff;
+border: 1px solid gray;
+}/*
+
+/*.on {
+min-height: 1px;
+width: 100%;
+padding-bottom: 100%;
+background: #000;
+}/*
